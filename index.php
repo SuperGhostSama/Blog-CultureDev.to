@@ -1,41 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../assets/css/style.css" />
-        <!-- CSS bootstrap-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-        <title>CultureDev</title>
-    </head>
-    <body style="background-color: #ffffff">
-      <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg " data-bs-theme="dark" style="background-color: #1a1a1a">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">CultureDev.to™</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4 text-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Abouts Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-secondary me-2" href="login.html" >Login</button>
-                        <button class="btn btn-secondary" href="signup.html" >Signup</button>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<?php 
+$title="Home";
+
+include_once("includes/head.php");
+?>
+<body style="background-color: #ffffff">
+      <?php include_once("includes/navbar.php"); ?>
         <!-- Carousel -->
         <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -45,13 +14,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../assets/img/Banner1.png" class="d-block w-100" alt="..." />
+                    <img src="assets/img/Banner1.png" class="d-block w-100" alt="..." />
                 </div>
                 <div class="carousel-item active">
-                    <img src="../assets/img/Banner2.png" class="d-block w-100" alt="..." />
+                    <img src="assets/img/Banner2.png" class="d-block w-100" alt="..." />
                 </div>
                 <div class="carousel-item active">
-                    <img src="../assets/img/Banner3.png" class="d-block w-100" alt="..." />
+                    <img src="assets/img/Banner3.png" class="d-block w-100" alt="..." />
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -71,7 +40,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
               <div class="col">
                 <div class="card shadow-sm">
-                  <img src="../assets/img/dev.jfif" alt="article">
+                  <img src="assets/img/dev.jfif" alt="article">
                   <div class="card-body">
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <div class="d-flex justify-content-between align-items-center">
@@ -85,7 +54,7 @@
               </div>
               <div class="col">
                 <div class="card shadow-sm">
-                  <img src="../assets/img/dev.jfif" alt="article">
+                  <img src="assets/img/dev.jfif" alt="article">
                   <div class="card-body">
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <div class="d-flex justify-content-between align-items-center">
@@ -99,7 +68,7 @@
               </div>
               <div class="col">
                 <div class="card shadow-sm">
-                  <img src="../assets/img/dev.jfif" alt="article">
+                  <img src="assets/img/dev.jfif" alt="article">
                   <div class="card-body">
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <div class="d-flex justify-content-between align-items-center">
@@ -126,7 +95,7 @@
                       </p>
                   </div>
                   <div class="col-md-6 align-self-start">
-                      <img id="thumbnail" class="img-thumbnail w-100" src="../assets/img/dev.jfif" alt="code">
+                      <img id="thumbnail" class="img-thumbnail w-100" src="assets/img/dev.jfif" alt="code">
                   </div>
               </div>
           </div>
@@ -136,10 +105,10 @@
       <section class="p-4">
         <h2 class="text-center mb-4">Our Partners</h2>
         <div class="d-flex justify-content-center flex-wrap">
-          <img src="../assets/img/Meta-Logo.png" alt="Partner 1" class="m-2" style="width: 150px;">
-          <img src="../assets/img/polygon.png" alt="Partner 2" class="m-2" style="width: 150px;">
-          <img src="../assets/img/polygon.png" alt="Partner 3" class="m-2" style="width: 150px;">
-          <img src="../assets/img/Meta-Logo.png" alt="Partner 4" class="m-2" style="width: 150px;">
+          <img src="assets/img/Meta-Logo.png" alt="Partner 1" class="m-2" style="width: 150px;">
+          <img src="assets/img/polygon.png" alt="Partner 2" class="m-2" style="width: 150px;">
+          <img src="assets/img/polygon.png" alt="Partner 3" class="m-2" style="width: 150px;">
+          <img src="assets/img/Meta-Logo.png" alt="Partner 4" class="m-2" style="width: 150px;">
         </div>
       </section>
       
@@ -178,13 +147,7 @@
               <li class="ms-3"><a class="" href="#"><i class="bi bi-facebook" width="24" height="24" style="color: white;"></i></a></li>
             </ul>
           </div>
-      </footer>
-
-
-      
-      
+      </footer> 
     </body>
-    <script src="../assets/js/script.js"></script>
-    <!-- JavaScript bootstrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <?php include_once 'includes/corejs.php'; ?>
 </html>

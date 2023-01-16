@@ -1,41 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>SignUp</title>
-</head>
+<?php 
+$title="SignUp";
+
+include_once("../includes/head.php");
+?>
+
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" style="background-color: #1a1a1a">
-      <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">CultureDev.to™</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4 text-center">
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Abouts Us</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
-                  </li>
-              </ul>
-              <div class="d-flex justify-content-center">
-                  <button class="btn btn-secondary me-2" href="login.html" >Login</button>
-                  <button class="btn btn-secondary" href="signup.html" >Signup</button>
-              </div>
-          </div>
-      </div>
-    </nav>
+  <?php include_once("../includes/navbar.php"); ?>
+
     <!-- SignUp -->
     <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
         <div class="modal-dialog" role="document">
@@ -85,6 +56,5 @@
         </div>
       </div>
 </body>
-<script src="../assets/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<?php include_once '../includes/corejs.php'; ?>
 </html>
