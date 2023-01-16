@@ -1,0 +1,34 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+
+.carousel .carousel-control-next-icon {
+      background-image: url('../img/arrow-right-square-fill.svg');
+  }
+.carousel .carousel-control-prev-icon {
+    background-image: url('../img/arrow-left-square-fill.svg');
+}
+
+
+.icon{
+border-radius: 50px;
+background: #ffffff;
+box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
+}
+.card{
+    border-radius: 50px;
+background: linear-gradient(145deg, #ffffff, #e6e6e6);
+box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
+}
+
+@media (min-width: 992px) {
+    #aboutUs {
+      font-size:  2rem ;
+    }
+    #aboutUsHeader{
+        font-size: 2rem;
+    }
+    
+  }
+  
