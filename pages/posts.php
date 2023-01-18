@@ -60,11 +60,11 @@ include '../controllers/PostsController.php';
                     <input name="title" type="text" class="form-control" id="title" value="<?php if(isset($modalRow)) echo $modalRow['title']; ?>" required/>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Groups</label>
-                    <select class="form-select" id="groups" name="groups" required>
+                    <label class="form-label">Categories</label>
+                    <select class="form-select" id="category" name="category" required>
                       <option disabled hidden selected>Please select</option>
-                      <option <?php if(isset($modalRow)){ echo ($modalRow['team_group']=='A')  ?  'selected' : '';}?> value="A">ANIME</option>
-                      <option <?php if(isset($modalRow)){ echo ($modalRow['team_group']=='B')  ?  'selected' : '';}?> value="B">BATMAN</option>
+                      <option <?php if(isset($modalRow)){ echo ($modalRow['name']=='A')  ?  'selected' : '';}?> value="A">ANIME</option>
+                      <option <?php if(isset($modalRow)){ echo ($modalRow['name']=='B')  ?  'selected' : '';}?> value="B">BATMAN</option>
                     </select>
                   </div>
                   <div class="mb-3">
@@ -74,8 +74,12 @@ include '../controllers/PostsController.php';
                   <div class="mb-3">
                     <label class="col-md-4 control-label mb-1" for="filebutton">Post Image</label>
                     <div class="col-md-4">
-                    <input id="teamImage" name="teamImage" class="input-file" type="file">
+                    <input id="postImage" name="postImage" class="input-file" type="file">
                     </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label" >Owner</label>
+                    <input disabled name="owner" type="text" class="form-control" id="owner" value="<?php if(isset($modalRow)) echo $modalRow['title']; ?>" required/>
                   </div>
               </div>
               <div class="modal-footer">
@@ -95,4 +99,5 @@ include '../controllers/PostsController.php';
         $('#myTable').DataTable();
 });
 </script>
+
 </html>
