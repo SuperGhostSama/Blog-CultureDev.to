@@ -26,7 +26,7 @@ class Users extends Database {
             $stmt->bindParam(':password', $this->password);
             $stmt->bindParam(':username', $this->fullName);
             $stmt->execute();
-            $_SESSION['registerSuccess'] = 'Registration successful. Please login.';
+            $_SESSION['registerSuccess'] = 'Registration Successful. Please login.';
             header('Location: /Blog-CultureDev.to/pages/login.php');
         }
 

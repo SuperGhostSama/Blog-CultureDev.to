@@ -12,7 +12,17 @@ if(isset($_SESSION["id"])){
 
 <body>
   <?php include_once("../includes/navbar.php"); ?>
+  <!-- MESSAGE NOTIFICATION -->
+  <?php
+            if(isset($_SESSION['emailError'])){?>
 
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert" id="success-alert">
+              <strong><?= $_SESSION['emailError'];?></strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+          <?php unset($_SESSION['emailError']);}?>
+          
     <!-- SignUp -->
     <div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
         <div class="modal-dialog" role="document">
