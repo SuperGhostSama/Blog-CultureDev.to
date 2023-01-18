@@ -61,7 +61,7 @@
                             </li>
                         </ul>
                         <div class="justify-content-between">
-                            <button class="btn btn-danger w-100 mt-5 fw-bold">Logout</button>
+                            <a class="btn btn-danger w-100 mt-5 fw-bold" href="../controllers/LogoutController.php">Logout</a>
                         </div>
                     </div>
                 </div>

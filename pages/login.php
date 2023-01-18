@@ -3,6 +3,12 @@ $title="login";
 
 
 include_once("../includes/head.php");
+include_once("../controllers/LoginController.php");
+
+if(isset($_SESSION["id"])){
+  header('location:dashboard.php');
+  die;
+}
 ?>
 
 <body>
@@ -17,20 +23,20 @@ include_once("../includes/head.php");
             </div>
       
             <div class="modal-body p-5 pt-0">
-              <form class="">
+              <form method="POST">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" name="email">
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" name="password">
                   <label for="floatingPassword">Password</label>
                 </div>
-                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Log In</button>
-                <small class="text-muted">Dont have an account yet? <a href=""> Create your account</a></small>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" name="login">Log In</button>
+                <small class="text-muted">Dont have an account yet? <a href="signup.php"> Create your account</a></small>
                 <hr class="my-4">
-                <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-                <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
+                <!-- <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2> -->
+                <!-- <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
                     <i class="bi bi-twitter"></i>
                   Log In with Twitter
                 </button>
@@ -41,7 +47,7 @@ include_once("../includes/head.php");
                 <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
                     <i class="bi bi-github"></i>
                   Log In with GitHub
-                </button>
+                </button> -->
               </form>
             </div>
           </div>

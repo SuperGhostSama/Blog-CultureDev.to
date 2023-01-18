@@ -1,9 +1,13 @@
 <?php 
+session_start();
 $title="Dashboard";
 
-
 include_once("../includes/head.php");
-
+// die(var_dump($_SESSION["id"]));
+if(!isset($_SESSION["id"])){
+    header('location:../index.php');
+    die;
+  }
 ?>
 
 <body style="height: 100vh;">
@@ -114,7 +118,7 @@ include_once("../includes/head.php");
         </div>
 
         <div class="pt-5 ps-4 pe-4">
-            <canvas id="myChart" style="max-height:500px;"></canvas>
+            <canvas id="myChart" style="max-height:300px;"></canvas>
         </div>
 
 </body>

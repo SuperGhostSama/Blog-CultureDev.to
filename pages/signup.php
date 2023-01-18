@@ -2,6 +2,12 @@
 $title="SignUp";
 
 include_once("../includes/head.php");
+include_once("../controllers/RegisterController.php");
+
+if(isset($_SESSION["id"])){
+  header('location:dashboard.php');
+  die;
+}
 ?>
 
 <body>
@@ -16,28 +22,28 @@ include_once("../includes/head.php");
             </div>
       
             <div class="modal-body p-5 pt-0">
-              <form class="">
+              <form method="POST">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control rounded-3" id="floatingText" placeholder="text">
+                  <input type="text" class="form-control rounded-3" id="floatingText" placeholder="text" name="fullName">
                   <label for="floatingText">Username</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" name="email">
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" name="password">
                   <label for="floatingPassword1">Password</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password Confirmation">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword2" placeholder="Password Confirmation" name="confirmPassword">
                   <label for="floatingPassword2">Password Confirmation</label>
                 </div>
-                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">SignUp</button>
-                <small class="text-muted">Already have an account? <a href=""> Log In Now</a></small>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" name="register">SignUp</button>
+                <small class="text-muted">Already have an account? <a href="login.php"> Log In Now</a></small>
                 <hr class="my-4">
 
-                <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+                <!-- <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
                 <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
                     <i class="bi bi-twitter"></i>
                   SignUp with Twitter
@@ -49,7 +55,7 @@ include_once("../includes/head.php");
                 <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
                     <i class="bi bi-github"></i>
                   SignUp with GitHub
-                </button>
+                </button> -->
               </form>
             </div>
           </div>
