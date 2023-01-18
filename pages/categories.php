@@ -1,17 +1,27 @@
 <?php 
 $title="Categories";
 include_once("../includes/head.php");
-
+include '../controllers/CategoryController.php';
 ?>
 
 <body style="height: 100vh;">
 <?php include_once '../includes/sidenav.php'; ?>
+<!-- MESSAGE NOTIFICATION -->
+<?php
+            if(isset($_SESSION['categoryDelete'])){?>
 
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert" id="success-alert">
+              <strong><?= $_SESSION['categoryDelete'];?></strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+          <?php unset($_SESSION['categoryDelete']);}?>
+       
     <!-- Button -->
     <div class="d-flex justify-content-end m-4">
-        <button class="btn btn-primary">+ Add Category</button>
-    </div>
-
+            <button href="#modal-categories" data-bs-toggle="modal" class="btn btn-primary d-flex "  onclick="resetForm()"><i class="bi bi-plus-circle-dotted me-2" ></i>Add Category</button>
+        </div>
+        
     <!-- Table -->
     <div class="p-5" >
         <table class="table table-dark table-hover table-bordered text-center" id="test">
@@ -23,30 +33,69 @@ include_once("../includes/head.php");
           </tr>
         </thead>
         <tbody>
+
+        <?php 
+            $b = new Crud();
+            $b->select("category","*");
+            $result = $b->sql;
+        ?>
+        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
           <tr>
-            <th scope="row">anime</th>
+            <th scope="row"><?php echo $row['name']; ?></th>
             <td>
-                <button class="btn btn-danger">Update</button>
-                <button class="btn btn-warning">Delete</button>
+                <a href="categories.php?updateId=<?php echo $row['id']; ?>" type="button" class="btn btn-warning">Update</a>
+                <a href="../controllers/CategoryController.php?deleteId=<?php echo $row['id']; ?>" type="button" class="btn btn-danger">Delete</a>
             </td>
           </tr>
-          <tr>
-            <th scope="row">blockchain</th>
-            <td>
-                <button class="btn btn-danger">Update</button>
-                <button class="btn btn-warning">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">developement</th>
-            <td>
-                <button class="btn btn-danger">Update</button>
-                <button class="btn btn-warning">Delete</button>
-            </td>
-          </tr>
+          <?php } ?>
         </tbody>
         </table>
     </div>
+
+    <?php 
+          if(isset($_GET['updateId'])){
+            $b->select("category","*","id='".$_GET['updateId']."'");
+            $result = $b->sql;
+            $modalRow = $result->fetch(PDO::FETCH_ASSOC);
+          }
+        ?>
+     <!-- MODAL -->
+     <div class="modal fade" id="modal-categories" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form action="" method="POST" id="form" enctype="multipart/form-data">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal-title"><?php if(isset($_GET['updateId'])){echo 'Update';} else { echo 'Add';}?> Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- HIDDEN INPUT  -->
+                  <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['id'] ?>" name="category-id">
+                  <div class="mb-3">
+                    <label class="form-label" >Categories</label>
+                    <input name="category" type="text" class="form-control" id="category" value="<?php if(isset($modalRow)) echo $modalRow['name']; ?>" required/>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn btn-secondary" >Cancel</button>
+                <button type="submit" name="save" class="btn btn-primary task-action-btn" id="save">Save</button>
+                <button type="submit" name="update" class="btn btn-warning task-action-btn" id="update">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
 </body>
 <?php include_once '../includes/corejs.php'; ?>
+<script>
+    <?php if (isset($_GET['updateId'])) { ?>
+      window.onload = function() {
+        $("#save").hide();
+        $("#update").show();
+        $("#modal-categories").modal("show");
+      };
+  <?php }
+    ?>
+  </script>
 </html>
