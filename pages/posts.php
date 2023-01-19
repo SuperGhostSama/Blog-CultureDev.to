@@ -19,18 +19,26 @@ include '../controllers/PostsController.php';
         <th class="text-center" scope="col">Img</th>
         <th class="text-center" scope="col">Title</th>
         <th class="text-center" scope="col">Category</th>
+        <th class="text-center" scope="col">Owner</th>
         <th class="text-center" scope="col">Description</th>
         <th class="text-center" scope="col">Operations</th>
       </tr>
     </thead>
     <tbody>
 
-    
+    <?php 
+            $b = new Crud();
+            $where="WHERE ";
+            $b->select("article","*");
+            $result = $b->sql;
+        ?>
+        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
       <tr class="text-center">
         <td class="align-middle"><img class="" src="../assets/upload/Chad.jpg" alt="postImg" width="50px"></td>
-        <td class="align-middle">Cyber Security</td>
-        <td class="align-middle">Security</td>
-        <td class="align-middle" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, ipsa?</td>
+        <td class="align-middle"><?php echo $row['title']; ?></td>
+        <td class="align-middle"><?php echo $row['category_id']; ?></td>
+        <td class="align-middle"><?php echo $row['admin_id']; ?></td>
+        <td class="align-middle" ><?php echo $row['description']; ?></td>
         <td class="align-middle" >
             <div class="d-flex flex-wrap justify-content-around">
                 <a href="#" type="button" class="btn btn-warning d-flex" ></i>Update</a>
@@ -38,7 +46,7 @@ include '../controllers/PostsController.php';
             </div>
         </td>
       </tr>
-      
+      <?php } ?>
     </tbody>
     </table>
 </div>
@@ -69,7 +77,7 @@ include '../controllers/PostsController.php';
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea class="form-control" rows="10" id="product-description" name="description" required>hhh</textarea>
+                    <textarea class="form-control" rows="10" id="description" name="description" required></textarea>
                   </div>
                   <div class="mb-3">
                     <label class="col-md-4 control-label mb-1" for="filebutton">Post Image</label>

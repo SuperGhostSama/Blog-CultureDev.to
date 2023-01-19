@@ -1,50 +1,59 @@
 <?php
-include_once __DIR__.'/../models/Crud.class.php';
+include_once __DIR__.'/../models/Crud.php';
 
+class CategoryController extends Crud
+{
+    //SAVE FUNCTION
+    public function addCategory(){  
+        if (isset($_POST['save'])) {
+        $category = $_POST['category'];
+        $a=$this->insert('category',['name'=>$category]);
+        if ($a == true) {
+            $_SESSION['categorySave'] = "New Category has been added successfully !";
+            header('location:../pages/categories.php');
+            die;
+            }
+        }
+    }
 
- //SAVE FUNCTION
- if (isset($_POST['save'])) {
-    $category = $_POST['category'];
+    //DELETE FUNCTION
+    public function deleteCategory(){ 
+        if (isset($_GET['deleteId'])){
+        $id = $_GET['deleteId'];
 
-    $a = new Crud();
-    $a->insert('category',['name'=>$category]);
-    if ($a == true) {
-        $_SESSION['categorySave'] = "New Category has been added successfully !";
-        header('location:../pages/categories.php');
-        
+        $a=$this->delete('category',"id='$id'");
+        if ($a == true) {
+            $_SESSION['categoryDelete'] = "Category has been Deleted successfully !";
+            header('location:../pages/categories.php');
+            die;
+        }
     }
 }
 
+    //UPDATE FUNCTION
+    public function updateCategory(){ 
+        if (isset($_POST['update'])) {
+            $id=$_POST['category-id'];
+            $category = $_POST['category'];
+            
+            $a=$this->update('category',['name'=>$category],$id);
+            if ($a == true) {
+                $_SESSION['categoryUpdate'] = "Category has been Updated successfully !";
+                header('location:../pages/categories.php');
+                die;
+            }
+        }
+    }
 
-//DELETE FUNCTION
-if (isset($_GET['deleteId'])){
-$id = $_GET['deleteId'];
-$a = new Crud();
+    public function getCategory(){ 
 
+        $result =$this->select("category","*");
+        return $result;
+    }
 
-$a->select("category","*","id='$id'");
-$result = $a->sql->fetch(PDO::FETCH_ASSOC);
+    public function OneCategory($id){ 
 
-$a->delete('category',"id='$id'");
-if ($a == true) {
-    $_SESSION['categoryDelete'] = "Category has been Deleted successfully !";
-    header('location:../pages/categories.php');
+        $result =$this->select("category","*", "id = '$id'");
+        return $result;
+    }
 }
-}
-
-
-//UPDATE FUNCTION
-if (isset($_POST['update'])) {
-$id=$_POST['category-id'];
-$category = $_POST['category'];
-$a = new Crud();
-$a->update('category',['name'=>$category],$id);
-
-
-if ($a == true) {
-    $_SESSION['categoryUpdate'] = "Category has been Updated successfully !";
-    header('location:../pages/categories.php');
-}
-
-}
-    

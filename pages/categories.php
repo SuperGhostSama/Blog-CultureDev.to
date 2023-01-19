@@ -2,6 +2,13 @@
 $title="Categories";
 include_once("../includes/head.php");
 include '../controllers/CategoryController.php';
+
+$Category= new CategoryController();
+$allCategories= $Category->getCategory();
+$Category->addCategory();
+$Category->deleteCategory();
+$Category->updateCategory();
+
 ?>
 
 <body style="height: 100vh;">
@@ -34,17 +41,13 @@ include '../controllers/CategoryController.php';
         </thead>
         <tbody>
 
-        <?php 
-            $b = new Crud();
-            $b->select("category","*");
-            $result = $b->sql;
-        ?>
-        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+
+        <?php foreach($allCategories as $category ) { ?>
           <tr>
-            <th scope="row"><?php echo $row['name']; ?></th>
+            <th scope="row"><?php echo $category['name']; ?></th>
             <td>
-                <a href="categories.php?updateId=<?php echo $row['id']; ?>" type="button" class="btn btn-warning">Update</a>
-                <a href="../controllers/CategoryController.php?deleteId=<?php echo $row['id']; ?>" type="button" class="btn btn-danger">Delete</a>
+                <a href="categories.php?updateId=<?php echo $category['id']; ?>" type="button" class="btn btn-warning">Update</a>
+                <a href="categories.php?deleteId=<?php echo $category['id']; ?>" type="button" class="btn btn-danger">Delete</a>
             </td>
           </tr>
           <?php } ?>
@@ -54,9 +57,9 @@ include '../controllers/CategoryController.php';
 
     <?php 
           if(isset($_GET['updateId'])){
-            $b->select("category","*","id='".$_GET['updateId']."'");
-            $result = $b->sql;
-            $modalRow = $result->fetch(PDO::FETCH_ASSOC);
+            $id = $_GET['updateId'];
+            $result = $Category -> OneCategory($id);
+            $modalRow = $result[0];
           }
         ?>
      <!-- MODAL -->
@@ -70,7 +73,7 @@ include '../controllers/CategoryController.php';
               </div>
               <div class="modal-body">
                   <!-- HIDDEN INPUT  -->
-                  <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['id'] ?>" name="category-id">
+                  <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['id']; ?>" name="category-id">
                   <div class="mb-3">
                     <label class="form-label" >Categories</label>
                     <input name="category" type="text" class="form-control" id="category" value="<?php if(isset($modalRow)) echo $modalRow['name']; ?>" required/>
