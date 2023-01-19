@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 16 jan. 2023 à 15:38
+-- Généré le : jeu. 19 jan. 2023 à 09:04
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 8.1.10
 
@@ -34,6 +34,16 @@ CREATE TABLE `admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
+(1, 'test', 'test@test.com', '$2y$10$KLujPVWMaxXs1/4/T7qXIeyyJ6dpPROEziFph2etgsELg9gGivx7m'),
+(2, 'salah', 'salah@salah.com', '$2y$10$/Hvykw1VXGEkc9DoT1i4hOnFWJIyp5d4hmy8UCr1nBZ7RQp5PP/O.'),
+(3, 'hajjou', 'hajjou@hajjou.com', '$2y$10$z723RBqLuNVzoU4R4fiK4.3YAMb3MzG7GUAbMHSiWh2as5qe5UEEO'),
+(4, 'mouad', 'mouad@mouad.com', '$2y$10$uP7XUovSqANc3OKp3weJiOcgEvBzfjRMdwmdkpCWYlwKt7zsciaCu');
+
 -- --------------------------------------------------------
 
 --
@@ -43,9 +53,10 @@ CREATE TABLE `admin` (
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `admin_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -58,6 +69,17 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(6, 'Devop'),
+(7, 'SysOps'),
+(8, 'Front-End'),
+(9, 'Back-End'),
+(10, 'test');
 
 --
 -- Index pour les tables déchargées
@@ -91,7 +113,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `article`
@@ -103,7 +125,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Contraintes pour les tables déchargées
