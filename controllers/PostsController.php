@@ -30,7 +30,6 @@ class PostsController extends Crud
             
         }
 
-        
         $a=$this->insert('article',['title'=>$title,'description'=>$description,'admin_id'=>'1','category_id'=>'9','image'=>$image]);
         if ($a == true) {
             $_SESSION['postSave'] = "New Post has been added successfully !";
@@ -67,7 +66,6 @@ class PostsController extends Crud
                 header('location:../pages/posts.php');
                 die;
             }
-
         }
     }
 
@@ -83,41 +81,3 @@ class PostsController extends Crud
         return $result;
     }
 }
-//SAVE FUNCTION
-// if (isset($_POST['save'])) {
-//     $title = $_POST['title'];
-//     $description = $_POST['description'];
-
-//     // //ADD POST IMAGE
-//     // foreach($_FILES as $key => $value){
-//     //     //Upload img
-//     //     //-----------------------------------------------
-        
-//     //     $tmp_picture_name     = $value['tmp_name'];
-//     //     //unique id img
-//     //     $new_unique_name      = uniqid('',true);
-//     //     //
-//     //     $basename = $value['name'];
-//     //     $image = $new_unique_name . $basename;
-//     //     //check picture
-//     //     if(!empty($value['name'])){
-//     //         $destination_file = '../assets/upload/'.$image;
-//     //     }
-        
-//     //     //Func upload picture
-//     //     move_uploaded_file($tmp_picture_name,$destination_file);
-//     //     if($key=="postImage"){
-//     //         $post=$image;
-//     //     }
-//     // }
-    
-    
-//     $a = new Crud();
-//     $a->insert('article',['title'=>$title,'description'=>$description]);
-//     if ($a == true) {
-        
-//         $_SESSION['postSave'] = "New Category has been added successfully !";
-//         header('location:../pages/posts.php');
-        
-//     }
-// }

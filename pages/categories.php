@@ -26,7 +26,7 @@ $Category->updateCategory();
        
     <!-- Button -->
     <div class="d-flex justify-content-end m-4">
-            <button href="#modal-categories" data-bs-toggle="modal" class="btn btn-primary d-flex "  onclick="resetForm()"><i class="bi bi-plus-circle-dotted me-2" ></i>Add Category</button>
+            <button href="#modal-categories" data-bs-toggle="modal" class="btn btn-primary d-flex "  onclick="resetCategoryForm()"><i class="bi bi-plus-circle-dotted me-2" ></i>Add Category</button>
         </div>
         
     <!-- Table -->
