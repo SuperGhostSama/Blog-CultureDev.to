@@ -2,6 +2,13 @@
 $title="Posts";
 include_once("../includes/head.php");
 include '../controllers/PostsController.php';
+
+$Posts= new PostsController();
+$allPosts= $Posts->getPosts();
+$Posts->addPosts();
+$Posts->deletePosts();
+$Posts->updatePosts();
+
 ?>
 
 <body style="height: 100vh;">    
@@ -26,23 +33,18 @@ include '../controllers/PostsController.php';
     </thead>
     <tbody>
 
-    <?php 
-            $b = new Crud();
-            $where="WHERE ";
-            $b->select("article","*");
-            $result = $b->sql;
-        ?>
-        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+    
+    <?php foreach($allPosts as $posts ) { ?>
       <tr class="text-center">
-        <td class="align-middle"><img class="" src="../assets/upload/Chad.jpg" alt="postImg" width="50px"></td>
-        <td class="align-middle"><?php echo $row['title']; ?></td>
-        <td class="align-middle"><?php echo $row['category_id']; ?></td>
-        <td class="align-middle"><?php echo $row['admin_id']; ?></td>
-        <td class="align-middle" ><?php echo $row['description']; ?></td>
+        <td class="align-middle"><img class="" src="../assets/upload/<?php echo $posts['image']; ?>" alt="postImg" width="50px"></td>
+        <td class="align-middle"><?php echo $posts['title']; ?></td>
+        <td class="align-middle"><?php echo $posts['category_id']; ?></td>
+        <td class="align-middle"><?php echo $posts['admin_id']; ?></td>
+        <td class="align-middle" ><?php echo $posts['description']; ?></td>
         <td class="align-middle" >
             <div class="d-flex flex-wrap justify-content-around">
-                <a href="#" type="button" class="btn btn-warning d-flex" ></i>Update</a>
-                <a href="#" type="button" class="btn btn-danger d-flex" ></i>Delete</a>
+                <a href="posts.php?updateId=<?php echo $posts['id']; ?>" type="button" class="btn btn-warning d-flex" ></i>Update</a>
+                <a href="posts.php?deleteId=<?php echo $posts['id']; ?>" type="button" class="btn btn-danger d-flex" ></i>Delete</a>
             </div>
         </td>
       </tr>
