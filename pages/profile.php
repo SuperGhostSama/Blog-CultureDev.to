@@ -3,6 +3,7 @@ $title="Profile";
 
 
 include_once("../includes/head.php");
+include_once("../models/Users.php");
 
 ?>
 
@@ -19,7 +20,7 @@ include_once("../includes/head.php");
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>Salah</h4>
+                      <h4><?php echo $_SESSION['fullName']?></h4>
                       <p class="badge text-bg-primary mb-1">Admin</p>
                       
                     </div>
@@ -35,28 +36,28 @@ include_once("../includes/head.php");
                     <div class="col-sm-3">
                       <h6 class="mb-0">Full Name</h6>
                     </div>
-                    <input class="col-sm-9 text-secondary w-50" type="text"></input>
+                    <input disabled class="col-sm-9 text-secondary w-50" type="text" value="<?php echo $_SESSION['fullName']?>"></input>
                   </div>
                   <hr>
                   <div class="row justify-content-center ">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
                     </div>
-                    <input class="col-sm-9 text-secondary w-50" type="email"></input>
+                    <input disabled class="col-sm-9 text-secondary w-50" type="email" value="<?php echo $_SESSION['email']?>"></input>
                   </div>
                   <hr>
                   <div class="row justify-content-center ">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Password</h6>
                     </div>
-                    <input class="col-sm-9 text-secondary w-50" type="password"></input>
+                    <input disabled class="col-sm-9 text-secondary w-50" type="password"></input>
                   </div>
                   <hr>
                   <div class="row justify-content-center ">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Confirm Password</h6>
                     </div>
-                    <input class="col-sm-9 text-secondary w-50" type="password" ></input>
+                    <input disabled class="col-sm-9 text-secondary w-50" type="password" ></input>
                   </div>
                   <hr>
                   <div class="row ">
