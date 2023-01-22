@@ -36,7 +36,7 @@ class CategoryController extends Crud
             $id=$_POST['category-id'];
             $category = $_POST['category'];
             
-            $a=$this->update('category',['name'=>$category],$id);
+            $a=$this->update('category',['name'=>$category],'id',$id);
             if ($a == true) {
                 $_SESSION['categoryUpdate'] = "Category has been Updated successfully !";
                 header('location:../pages/categories.php');

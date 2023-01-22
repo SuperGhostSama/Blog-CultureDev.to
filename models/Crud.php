@@ -14,7 +14,7 @@ class Crud extends Database
         return $result;
     }
 
-    protected function update($table,$para=array(),$id){
+    protected function update($table,$para=array(),$tableId,$id){
 
         foreach ($para as $key => $value) {
             $args[] = "$key = '$value'"; 
@@ -22,7 +22,7 @@ class Crud extends Database
 
         $sql="UPDATE  $table SET " . implode(',', $args);
 
-        $sql .=" WHERE id=$id";
+        $sql .=" WHERE $tableId=$id";
         $result = $this->con->query($sql);
         return $result;
     }
@@ -46,6 +46,17 @@ class Crud extends Database
         
         $result = $this->con->query($sql);
         $res = $result ->fetchALL();
+        return $res;
+    }
+
+    
+    protected function selectWithInnerJoin($table1,$table2,$column_name1,$column_name2,$rows="*"){
+       
+         $sql="SELECT $rows FROM $table1 INNER JOIN $table2 ON $table1.$column_name1 = $table2.$column_name2";
+
+        $result = $this->con->query($sql);
+        $res = $result ->fetchALL();
+        // var_dump($res);
         return $res;
     }
     

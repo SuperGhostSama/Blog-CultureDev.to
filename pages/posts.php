@@ -4,10 +4,11 @@ include_once("../includes/head.php");
 include '../controllers/PostsController.php';
 
 $Posts= new PostsController();
-$allPosts= $Posts->getPosts();
+$allPosts= $Posts->getPostsWithOwner();
 $Posts->addPosts();
 $Posts->deletePosts();
 $Posts->updatePosts();
+
 
 include '../controllers/CategoryController.php';
 
@@ -45,12 +46,12 @@ $allCategories= $Category->getCategory();
         <td class="align-middle"><?php foreach ($allCategories as $category) {
           if($posts['category_id']==$category['id']) echo $category['name'];
         }?></td>
-        <td class="align-middle"><?php echo $posts['admin_id']; ?></td>
+        <td class="align-middle"><?php echo $posts['username']; ?></td>
         <td class="align-middle" ><?php echo $posts['description']; ?></td>
         <td class="align-middle" >
             <div class="d-flex flex-wrap justify-content-around">
-                <a href="posts.php?updateId=<?php echo $posts['id']; ?>" onclick="" type="button" class="btn btn-warning d-flex" ></i>Update</a>
-                <a href="posts.php?deleteId=<?php echo $posts['id']; ?>" type="button" class="btn btn-danger d-flex" ></i>Delete</a>
+                <a href="posts.php?updateId=<?php echo $posts['article_id']; ?>" onclick="" type="button" class="btn btn-warning d-flex" ></i>Update</a>
+                <a href="posts.php?deleteId=<?php echo $posts['article_id']; ?>" type="button" class="btn btn-danger d-flex" ></i>Delete</a>
             </div>
         </td>
       </tr>
@@ -69,13 +70,14 @@ $allCategories= $Category->getCategory();
 <div class="modal fade" id="modal-posts" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
         <div class="modal-dialog">
           <div class="modal-content">
+          <form action="" method="POST" id="form" enctype="multipart/form-data">
               <div class="modal-header">
                 <h5 class="modal-title" id="modal-title"><?php if(isset($_GET['updateId'])){echo 'Update';} else { echo 'Add';}?> Post</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                   <!-- HIDDEN INPUT  -->
-                  <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['id'] ?>" name="posts-id">
+                  <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['article_id'] ?>" name="posts-id">
                   <div class="mb-3">
                     <label class="form-label" >Title</label>
                     <input name="title" type="text" class="form-control" id="title" value="<?php if(isset($modalRow)) echo $modalRow['title']; ?>" required/>
@@ -93,7 +95,6 @@ $allCategories= $Category->getCategory();
                             } ?>
                     </select>
                   </div>
-
                   <div class="mb-3">
                     <label class="form-label">Description</label>
                     <textarea class="form-control" rows="10" id="description" name="description" required><?php if(isset($modalRow)) echo $modalRow['description']; ?></textarea>
@@ -104,10 +105,7 @@ $allCategories= $Category->getCategory();
                     <input id="postImage" name="postImage" class="input-file" type="file">
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label" >Owner</label>
-                    <input disabled name="owner" type="text" class="form-control" id="owner" value="<?php if(isset($modalRow)) echo $modalRow['admin_id']; ?>" required/>
-                  </div>
+                  
               </div>
               <div class="modal-footer">
                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary" >Cancel</button>
