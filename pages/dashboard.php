@@ -1,17 +1,22 @@
 <?php 
-session_start();
+include '../controllers/StatistiqueController.php';
 $title="Dashboard";
 
 include_once("../includes/head.php");
-// die(var_dump($_SESSION["id"]));
+
 if(!isset($_SESSION["id"])){
     header('location:../index.php');
     die;
   }
+
+
+  $stat = new StatistiqueController();
+  $counts = $stat->countRows();
 ?>
 
 <body style="height: 100vh;">
 <?php include_once '../includes/sidenav.php'; ?>
+
         <!-- STATISTIC CARDS -->
         <div class="row m-5 flex-wrap justify-content-center ">
             <div class="col-xl-3 col-sm-6  mb-4">
@@ -22,7 +27,7 @@ if(!isset($_SESSION["id"])){
                     <div class="numbers">
                         <p class="mb-0 fw-bold">Posts</p>
                         <h5 class="mb-0">
-                        300
+                        <?php echo $counts['article'] ?>
                         </h5>
                     </div>
                     </div>
@@ -46,7 +51,7 @@ if(!isset($_SESSION["id"])){
                     <div class="numbers">
                         <p class="mb-0 fw-bold">Categories</p>
                         <h5 class=" mb-0">
-                            5
+                        <?php echo $counts['category'] ?>
                         </h5>
                     </div>
                     </div>
@@ -63,32 +68,7 @@ if(!isset($_SESSION["id"])){
                 </div>
             </div>
             </div>
-            <div class="col-xl-3 col-sm-6  mb-4">
-            <div class="card border-3">
-                <div class="card-body p-3">
-                <div class="row">
-                    <div class="col-8">
-                    <div class="numbers">
-                        <p class="mb-0 fw-bold">Developpers</p>
-                        <h5 class=" mb-0">
-                        200
-                        </h5>
-                    </div>
-                    </div>
-                    <div class="col-4 text-end">
-                    <div class="icon shadow text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users align-text-bottom" aria-hidden="true">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="9" cy="7" r="4"></circle>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
+            
             <div class="col-xl-3 col-sm-6  mb-4">
             <div class="card border-3">
                 <div class="card-body p-3">
@@ -97,7 +77,7 @@ if(!isset($_SESSION["id"])){
                     <div class="numbers">
                         <p class="mb-0 fw-bold">Admins</p>
                         <h5 class=" mb-0">
-                        5
+                        <?php echo $counts['admin'] ?>
                         </h5>
                     </div>
                     </div>
@@ -129,10 +109,10 @@ if(!isset($_SESSION["id"])){
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['Posts', 'Categories', 'Developpers', 'Admins'],
+            labels: ['Posts', 'Categories', 'Admins'],
             datasets: [{
               label: 'Statistics',
-              data: [10, 5, 20, 5],
+              data: [<?php echo $counts['article'] ?>, <?php echo $counts['category'] ?>, <?php echo $counts['admin'] ?>],
               borderWidth: 2
             }]
           },
