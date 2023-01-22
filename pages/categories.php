@@ -23,12 +23,17 @@ $Category->updateCategory();
             </div>
 
           <?php unset($_SESSION['categoryDelete']);}?>
-       
-    <!-- Button -->
-    <div class="d-flex justify-content-end m-4">
-            <button href="#modal-categories" data-bs-toggle="modal" class="btn btn-primary d-flex "  onclick="resetCategoryForm()"><i class="bi bi-plus-circle-dotted me-2" ></i>Add Category</button>
+      <div class="d-flex flex-wrap justify-content-around m-4 ">
+        <!-- Search -->
+        <form  class="d-flex m-4  " role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <!-- Button -->
+        <div class="m-4 ">
+                <button href="#modal-categories" data-bs-toggle="modal" class="btn btn-primary d-flex "  onclick="resetCategoryForm()"><i class="bi bi-plus-circle-dotted me-2" ></i>Add Category</button>
         </div>
-        
+     </div>   
     <!-- Table -->
     <div class="p-5" >
         <table class="table table-dark table-hover table-bordered text-center" id="test">
