@@ -41,7 +41,7 @@ $allCategories= $Category->getCategory();
     
     <?php foreach($allPosts as $posts ) { ?>
       <tr class="text-center">
-        <td class="align-middle"><img class="" src="../assets/upload/<?php echo $posts['image']; ?>" alt="postImg" width="50px"></td>
+        <td class="align-middle"><img class="" src="../assets/upload/<?php echo $posts['image']; ?>" alt="Post Image" width="50px"></td>
         <td class="align-middle"><?php echo $posts['title']; ?></td>
         <td class="align-middle"><?php foreach ($allCategories as $category) {
           if($posts['category_id']==$category['id']) echo $category['name'];
@@ -111,7 +111,7 @@ $allCategories= $Category->getCategory();
               </div>
               <div class="modal-footer">
                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary" >Cancel</button>
-                <button type="submit" name="save" class="btn btn-primary task-action-btn" id="save">Save</button>
+                <button type="submit" name="save" class="btn btn-primary task-action-btn" id="save" >Save</button>
                 <button type="submit" name="update" class="btn btn-warning task-action-btn" id="update">Update</button>
               </div>
             </form>
