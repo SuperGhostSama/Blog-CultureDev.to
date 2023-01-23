@@ -80,7 +80,8 @@ $allCategories= $Category->getCategory();
                   <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['article_id'] ?>" name="posts-id">
                   <div class="mb-3">
                     <label class="form-label" >Title</label>
-                    <input name="title" type="text" class="form-control" id="title" value="<?php if(isset($modalRow)) echo $modalRow['title']; ?>" required/>
+                    <input name="title" type="text" class="form-control" id="title" value="<?php if(isset($modalRow)) echo $modalRow['title']; ?>" oninput="validateTitle()" required/>
+                    <div id="validateTitle"></div>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Categories</label>
@@ -97,7 +98,8 @@ $allCategories= $Category->getCategory();
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea class="form-control" rows="10" id="description" name="description" required><?php if(isset($modalRow)) echo $modalRow['description']; ?></textarea>
+                    <textarea class="form-control" rows="10" id="description" name="description" oninput="validateDescription()" required><?php if(isset($modalRow)) echo $modalRow['description']; ?></textarea>
+                    <div id="validateDescription"></div>
                   </div>
                   <div class="mb-3">
                     <label class="col-md-4 control-label mb-1" for="filebutton">Post Image</label>
@@ -116,6 +118,8 @@ $allCategories= $Category->getCategory();
           </div>
         </div>
       </div>
+<script src="../assets/js/formValidation.js"></script>
+
 </body>
 
 <?php include_once '../includes/corejs.php'; ?>

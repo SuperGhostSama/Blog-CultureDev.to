@@ -5,6 +5,7 @@ function resetCategoryForm(){
       $("#update").hide();
     }
   }
+  
 function resetPostsForm(){
     if (window.location.pathname.startsWith('/Blog-CultureDev.to/pages/posts.php')) {
       document.getElementById("title").value = "";
