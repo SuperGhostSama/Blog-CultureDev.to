@@ -15,9 +15,9 @@ class PostsController extends Crud
             //Upload img
             //-----------------------------------------------
             
-            $tmp_picture_name     = $value['tmp_name'];
+            $tmp_picture_name = $value['tmp_name'];
             //unique id img
-            $new_unique_name      = uniqid('',true);
+            $new_unique_name = uniqid('',true);
             //
             $basename = $value['name'];
             $image = $new_unique_name . $basename;
@@ -65,12 +65,13 @@ class PostsController extends Crud
             $category = $_POST['category'];
             
             foreach($_FILES as $key => $value){
+                if(!empty($value["name"])){
                 //Upload img
                 //-----------------------------------------------
                 
-                $tmp_picture_name     = $value['tmp_name'];
+                $tmp_picture_name = $value['tmp_name'];
                 //unique id img
-                $new_unique_name      = uniqid('',true);
+                $new_unique_name = uniqid('',true);
                 //
                 $basename = $value['name'];
                 $image = $new_unique_name . $basename;
@@ -83,8 +84,12 @@ class PostsController extends Crud
                 move_uploaded_file($tmp_picture_name,$distination_file);
                 
             }
-            
-            $a=$this->update('article',['title'=>$title,'description'=>$description,'admin_id'=>$_SESSION['id'],'category_id'=>$category,'image'=>$image],'article_id',$id);
+            if(empty($image)){
+                $a=$this->update('article',['title'=>$title,'description'=>$description,'admin_id'=>$_SESSION['id'],'category_id'=>$category],'article_id',$id);
+            }else{
+                $a=$this->update('article',['title'=>$title,'description'=>$description,'admin_id'=>$_SESSION['id'],'category_id'=>$category,'image'=>$image],'article_id',$id);
+            }
+
             if ($a == true) {
                 $_SESSION['postUpdate'] = "Post has been Updated successfully !";
                 header('location:../pages/posts.php');
@@ -92,6 +97,7 @@ class PostsController extends Crud
             }
         }
     }
+}
 
     public function getPosts(){ 
 

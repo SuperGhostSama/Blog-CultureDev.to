@@ -76,7 +76,8 @@ $Category->updateCategory();
                   <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['id']; ?>" name="category-id">
                   <div class="mb-3">
                     <label class="form-label" >Categories</label>
-                    <input name="category" type="text" class="form-control" id="category" value="<?php if(isset($modalRow)) echo $modalRow['name']; ?>" required/>
+                    <input name="category" type="text" class="form-control" id="category" value="<?php if(isset($modalRow)) echo $modalRow['name']; ?>" oninput="validateCategory()" required/>
+                    <div id="validateCategory"></div>
                   </div>
               </div>
               <div class="modal-footer">
@@ -88,7 +89,7 @@ $Category->updateCategory();
           </div>
         </div>
       </div>
-
+<script src="../assets/js/formValidation.js"></script>
 </body>
 <?php include_once '../includes/corejs.php'; ?>
 <script>
