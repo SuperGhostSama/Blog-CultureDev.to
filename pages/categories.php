@@ -23,25 +23,20 @@ $Category->updateCategory();
             </div>
 
           <?php unset($_SESSION['categoryDelete']);}?>
-      <div class="d-flex flex-wrap justify-content-around m-4 ">
-        <!-- Search -->
-        <form  class="d-flex m-4  " role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      
         <!-- Button -->
-        <div class="m-4 ">
+        <div class="d-flex flex-wrap justify-content-end m-4 ">
                 <button href="#modal-categories" data-bs-toggle="modal" class="btn btn-primary d-flex "  onclick="resetCategoryForm()"><i class="bi bi-plus-circle-dotted me-2" ></i>Add Category</button>
         </div>
-     </div>   
+        
     <!-- Table -->
     <div class="p-5" >
-        <table class="table table-dark table-hover table-bordered text-center" id="test">
+        <table class="table table-dark table-hover table-bordered text-center" id="myTable">
         <thead>
-          <tr class="fs-3">
-            <th scope="col">Categories</th>
+          <tr >
+            <th class="text-center" scope="col">Categories</th>
             
-            <th scope="col">Operation</th>
+            <th class="text-center" scope="col">Operation</th>
           </tr>
         </thead>
         <tbody>
@@ -96,6 +91,11 @@ $Category->updateCategory();
 
 </body>
 <?php include_once '../includes/corejs.php'; ?>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+});
+</script>
 <script>
     <?php if (isset($_GET['updateId'])) { ?>
       window.onload = function() {
