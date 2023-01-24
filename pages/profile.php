@@ -5,6 +5,11 @@ $title="Profile";
 include_once("../includes/head.php");
 include_once("../models/Users.php");
 
+if(!isset($_SESSION["id"])){
+  header('location:../index.php');
+  die;
+}
+
 ?>
 
 <body style="height: 100vh;">

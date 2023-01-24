@@ -3,6 +3,12 @@ $title="Posts";
 include_once("../includes/head.php");
 include '../controllers/PostsController.php';
 
+if(!isset($_SESSION["id"])){
+  header('location:../index.php');
+  die;
+}
+
+
 $Posts= new PostsController();
 $allPosts= $Posts->getPostsWithOwner();
 $Posts->addPosts();

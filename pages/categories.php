@@ -3,6 +3,11 @@ $title="Categories";
 include_once("../includes/head.php");
 include '../controllers/CategoryController.php';
 
+if(!isset($_SESSION["id"])){
+  header('location:../index.php');
+  die;
+}
+
 $Category= new CategoryController();
 $allCategories= $Category->getCategory();
 $Category->addCategory();
