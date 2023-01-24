@@ -56,7 +56,6 @@ class Crud extends Database
 
         $result = $this->con->query($sql);
         $res = $result ->fetchALL();
-        // var_dump($res);
         return $res;
     }
     

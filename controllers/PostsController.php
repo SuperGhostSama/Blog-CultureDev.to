@@ -11,6 +11,11 @@ class PostsController extends Crud
         $description = $_POST['description'];
         $category = $_POST['category'];
 
+        $title2 = $_POST['title2'];
+        $description2 = $_POST['description2'];
+        $category2 = $_POST['category2'];
+
+        
         foreach($_FILES as $key => $value){
             //Upload img
             //-----------------------------------------------
@@ -20,18 +25,24 @@ class PostsController extends Crud
             $new_unique_name = uniqid('',true);
             //
             $basename = $value['name'];
-            $image = $new_unique_name . $basename;
+            $image[] = $new_unique_name . $basename;
             //check picture
             if(!empty($value['name'])){
-                $distination_file = '../assets/upload/'.$image;
+                $distination_file = '../assets/upload/'.end($image);
             }
             
             //Func upload picture
             move_uploaded_file($tmp_picture_name,$distination_file);
             
         }
+    
+        
+        $a=$this->insert('article',['title'=>$title,'description'=>$description,'admin_id'=>$_SESSION['id'],'category_id'=>$category,'image'=>$image[0]]);
 
-        $a=$this->insert('article',['title'=>$title,'description'=>$description,'admin_id'=>$_SESSION['id'],'category_id'=>$category,'image'=>$image]);
+        if(!empty($title2)){
+            $a=$this->insert('article',['title'=>$title2,'description'=>$description2,'admin_id'=>$_SESSION['id'],'category_id'=>$category2,'image'=>$image[1]]);
+        }
+
         if ($a == true) {
             $_SESSION['postSave'] = "New Post has been added successfully !";
             header('location:../pages/posts.php');

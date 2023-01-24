@@ -92,7 +92,7 @@ $allCategories= $Category->getCategory();
                   <div class="mb-3">
                     <label class="form-label">Categories</label>
                     <select class="form-select" id="category" name="category" required>
-                      <option disabled hidden selected>Please Select</option>
+                      <option disabled selected value="">Please Select</option>
                       <?php foreach($allCategories as $category) {
                          if($modalRow['category_id'] == $category['id']){
                         echo '<option selected value="' . $category['id'] . '">' . $category['name'] . '</option>';
@@ -113,11 +113,49 @@ $allCategories= $Category->getCategory();
                     <input id="postImage" name="postImage" class="input-file" type="file">
                     </div>
                   </div>
+
+                  <!-- DUPLICATE -->
+                  <div class="modal-body" id="secondModal" style="display : none">
+                    <!-- HIDDEN INPUT  -->
+                  <input type="hidden" value="<?php if(isset($modalRow)) echo $modalRow['article_id'] ?>" name="posts-id2">
+                  <div class="mb-3">
+                    <label class="form-label" >Title</label>
+                    <input name="title2" type="text" class="form-control" id="title2" value="<?php if(isset($modalRow)) echo $modalRow['title']; ?>"  />
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Categories</label>
+                    <select class="form-select" id="category2" name="category2" >
+                      <option disabled  selected value="">Please Select</option>
+                      <?php foreach($allCategories as $category) {
+                         if($modalRow['category_id'] == $category['id']){
+                        echo '<option selected value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                          }else{
+                            echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                          }
+                            } ?>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" rows="10" id="description2" name="description2" ><?php if(isset($modalRow)) echo $modalRow['description']; ?></textarea>
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label class="col-md-4 control-label mb-1" for="filebutton">Post Image</label>
+                    <div class="col-md-4">
+                    <input id="postImage2" name="postImage2" class="input-file" type="file">
+                    </div>
+                  </div>
                   
+                  
+                  
+
               </div>
               <div class="modal-footer">
                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary" >Cancel</button>
                 <button type="submit" name="save" class="btn btn-primary task-action-btn" id="save" >Save</button>
+                <button type="button" name="addMore"  class="btn btn-success task-action-btn" id="addMore" onclick="showAddMore()"><i class="bi bi-plus-circle-dotted me-2" ></i> Add More</button>
                 <button type="submit" name="update" class="btn btn-warning task-action-btn" id="update">Update</button>
               </div>
             </form>
@@ -138,6 +176,7 @@ $allCategories= $Category->getCategory();
     <?php if (isset($_GET['updateId'])) { ?>
       window.onload = function() {
         $("#save").hide();
+        $("#addMore").hide();
         $("#update").show();
         $("#modal-posts").modal("show");
 
