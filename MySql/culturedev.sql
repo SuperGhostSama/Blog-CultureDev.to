@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2023 at 01:01 PM
+-- Generation Time: Jan 24, 2023 at 11:45 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -65,9 +65,11 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`article_id`, `title`, `description`, `admin_id`, `category_id`, `image`) VALUES
 (2, 'hhh', 'hhhdasdasdasdasdasdasdadddddddddddddddddddddddddddddddddddddddddddddddddss', 1, 8, '63cef099749ec8.43657150images.jfif'),
-(18, 'dfadsda', 'hhhhhhhhhhhhhhddd', 1, 7, '63cef1001dad94.31766332images.jfif'),
-(23, 'dddddddddaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaa', 1, 8, '63cef1195e3c60.74623267images.jfif'),
-(24, 'aaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaa', 1, 8, '63cef133e28b46.01727945');
+(30, 'ddddddddddddddddddddddddd', 'ddddddddddddddddddddddddd', 1, 9, '63d055f9d46f11.30493529'),
+(36, 'wwwwwwwwwwwwwwwwwwaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1, 6, '63d05905dd47f3.26907420images.jfif'),
+(37, 'zzzzzzzzzzzzzzz', 'zzzzzzzzzzzzzzz', 1, 9, '63d05905dd7ed1.68237380images.jfif'),
+(38, 'aaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaa', 1, 6, '63d05ac8657e09.67513059images.jfif'),
+(39, 'bbbbbbbbbbbbbbb', 'bbbbbbbbbbbbbbb', 1, 7, '63d05acd4ccfc2.95052764images.jfif');
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,8 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (7, 'SysOps'),
 (8, 'Front-End'),
 (9, 'Back-End'),
-(16, 'siu');
+(16, 'siu'),
+(22, 'ffffff');
 
 --
 -- Indexes for dumped tables
@@ -129,13 +132,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
